@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockWebApp", "RockWebApp\RockWebApp.csproj", "{DD76FF9E-049A-4725-9BA7-42F782D6D5AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD76FF9E-049A-4725-9BA7-42F782D6D5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD76FF9E-049A-4725-9BA7-42F782D6D5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD76FF9E-049A-4725-9BA7-42F782D6D5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD76FF9E-049A-4725-9BA7-42F782D6D5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7270CCBD-AC40-40DC-949E-AEB1F2706D02}
+	EndGlobalSection
+EndGlobal
