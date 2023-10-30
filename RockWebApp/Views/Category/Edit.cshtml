@@ -6,27 +6,27 @@
 
 <div class="container-fluid">
     <div class="card mb-3 mt-3 align-content-center span6 col-md-6" style="float: none; margin: 0 auto;">
-    <div class="card-header">Create Category</div>
-    <div class="card-body">
-        <div asp-validation-summary="All"></div>
-        <form method="post">
+        <div class="card-header">Edi Category</div>
+        <div class="card-body">
+            <div asp-validation-summary="All"></div>
+            <form method="post">
 
                 @*<div asp-validation-summary="ModelOnly"></div>*@
                 <div class="mb-3 row p-1">
 
                     <label asp-for=Name class="p-0 col-form-label col-form-label-sm"></label>
                     <input asp-for="Name" class="form-control form-control-sm" />
-                    <span  asp-validation-for="Name" class="text-danger text-sm-start" style="font-size:10px"></span>
+                    <span asp-validation-for="Name" class="text-danger text-sm-start" style="font-size:10px"></span>
                 </div>
                 <div class="mb-3 row p-1">
-                    <label asp-for=DisplayOrder class ="p-0 col-form-label col-form-label-sm"></label>
+                    <label asp-for=DisplayOrder class="p-0 col-form-label col-form-label-sm"></label>
                     <input asp-for="DisplayOrder" class="form-control form-control-sm" />
                     <span asp-validation-for="DisplayOrder" class="text-danger text-sm-start" style="font-size:10px"></span>
                 </div>
 
                 <div class="row">
                     <div class="col-6 col-md-3">
-                        <button type="submit" class="btn btn-sm btn-primary form-control">Create</button>
+                        <button type="submit" class="btn btn-sm btn-primary form-control">Update</button>
                     </div>
                     <div class="col-6 col-md-3">
                         <a asp-controller="Category" asp-action="Index" class="btn btn-sm btn-secondary border  form-control">
@@ -36,15 +36,15 @@
                 </div>
 
 
-     
-        </form>
+
+            </form>
+        </div>
     </div>
-</div>
 </div>
 
 @* using client side validation //// you can add _layout  *@
-    @section Scripts{
-        @{
-            <partial name="_validationscriptspartial" />
-        }
+@section Scripts{
+    @{
+        <partial name="_validationscriptspartial" />
+    }
     }
