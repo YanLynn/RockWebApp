@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RockWebApp.Models;
+using Rock.Models;
 
-namespace RockWebApp.Controllers.Data
+namespace Rock.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

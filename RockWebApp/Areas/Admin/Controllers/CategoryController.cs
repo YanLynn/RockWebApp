@@ -1,50 +1,56 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RockWebApp.Controllers.Data;
-using RockWebApp.Models;
+using Rock.DataAccess.Data;
+using Rock.DataAccess.Repository.IRepository;
+using Rock.Models;
 
-namespace RockWebApp.Controllers
+namespace RockWebApp.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
 
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db) { 
-            _db = db;
+        public CategoryController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> objCategory = _db.Categories.ToList();
+            List<Category> objCategory = _unitOfWork.Category.GetAll().ToList();
             return View(objCategory);
         }
 
-        public IActionResult Create() {
+        public IActionResult Create()
+        {
 
             return View();
         }
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            if(obj.Name == obj.DisplayOrder.ToString()){
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
                 ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the name");
             }
-            if(ModelState.IsValid) {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category Created Successfully.";
                 //you can redirect another controller.... ("action","controller")
                 return RedirectToAction("Index");
             }
             return View();
-            
+
         }
 
         public IActionResult Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            Category? category = _db.Categories.Find(id);
+            Category? category = _unitOfWork.Category.Get(u => u.Id == id);
             //Category? category1 = _db.Categories.FirstOrDefault(c => c.Id == id);
             //Category? category2 = _db.Categories.Where(c => c.Id == id).FirstOrDefault();
             if (category == null)
@@ -62,8 +68,8 @@ namespace RockWebApp.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
                 TempData["update"] = "Category Updated Successfully.";
                 //you can redirect another controller.... ("action","controller")
                 return RedirectToAction("Index");
@@ -78,27 +84,27 @@ namespace RockWebApp.Controllers
             {
                 return NotFound();
             }
-            Category? category = _db.Categories.Find(id);
+            Category? category = _unitOfWork.Category.Get(u => u.Id == id);
             if (category == null)
             {
                 return NotFound();
             }
             return View(category);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
             TempData["delete"] = "Category Deleted Successfully.";
             //you can redirect another controller.... ("action","controller")
             return RedirectToAction("Index");
-          
+
 
         }
 

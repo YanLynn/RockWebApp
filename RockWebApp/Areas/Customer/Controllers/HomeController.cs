@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using RockWebApp.Models;
+using Rock.Models;
 using System.Diagnostics;
 
-namespace RockWebApp.Controllers
+namespace RockWebApp.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

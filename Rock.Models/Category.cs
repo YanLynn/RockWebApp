@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RockWebApp.Models
+namespace Rock.Models
 {
     public class Category
     {

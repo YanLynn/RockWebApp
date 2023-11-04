@@ -1,4 +1,4 @@
-namespace RockWebApp.Models
+namespace Rock.Models
 {
     public class ErrorViewModel
     {
