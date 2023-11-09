@@ -1,8 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+﻿ 
+@model IEnumerable<Product>
+<div class="row pb-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <img src="@product.imgURL" class="card-img-top rounded" style="width:230px;height:130px"/>
+              
+                        <div class="pb-0">
+                            <div class="">
+                                <span class="card-title text-dark opacity-75 text-uppercase text-decoration-underline">@product.Title</span>
+                                 <br/>
+                                <span class="card-title text-warning text-center font-monospace" style="font-size:12px">by <b> <small>@product.Author</small></b></span>
+                            </div>
+                            <div class="pl-1" style="font-size:12px">
+                                <span class="text-dark text-center mb-0 text-opacity-75">
+                                    List Price: 
+                                    <span class="text-decoration-line-through">
+                                        @product.ListPrice.ToString("c")
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="pl-1" style="font-size:12px">
+                                <span class="text-dark text-opacity-75 text-center">As low as: 
+                                    <span>
+                                        @product.Price100.ToString("c")
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Details"
+                            asp-route-productId="@product.Id"
+                            class="btn btn-primary bg-gradient border-0 form-control">
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
