@@ -1,0 +1,102 @@
+﻿@model ProductVM
+
+
+
+
+
+<div class="container-fluid"> 
+    <div class="card mb-3 mt-3 align-content-center span6 col-md-12" style="float: none; margin: 0 auto;">
+    <div class="card-header"> @(Model.Product.Id != 0 ?"Update " : "Create ")Product</div>
+    <div class="card-body">
+        <div asp-validation-summary="All"></div>
+        <form method="post" enctype="multipart/form-data">
+                <input asp-for="Product.Id" hidden />
+                <input asp-for="Product.imgURL" hidden />
+                @*<div asp-validation-summary="ModelOnly"></div>*@
+                 <div class="row">
+                    <div class="col-md-10">
+                        <div class="row p-1">
+                            <label asp-for=Product.Title class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.Title" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.Title" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.Description class="p-0 col-form-label col-form-label-sm"></label>
+                            <textarea asp-for="Product.Description" class="form-control form-control-sm"></textarea>
+                            <span asp-validation-for="Product.Description" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+
+                        <div class="row p-1">
+                            <label asp-for=Product.ISBN class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.ISBN" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.ISBN" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.Author class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.Author" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.Author" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.ListPrice class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.ListPrice" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.ListPrice" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.Price class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.Price" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.Price" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.Price50 class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.Price50" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.Price50" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.Price100 class="p-0 col-form-label col-form-label-sm"></label>
+                            <input asp-for="Product.Price100" class="form-control form-control-sm" />
+                            <span asp-validation-for="Product.Price100" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.CategoryId class="p-0 col-form-label col-form-label-sm"></label>
+                            <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-control form-control-sm">
+                                <option disabled selected>--Select Category--</option>
+                            </select>
+                            <span asp-validation-for="Product.CategoryId" class="text-danger text-sm-start" style="font-size:10px"></span>
+                        </div>
+                        <div class="row p-1">
+                            <label asp-for=Product.imgURL class="p-0 col-form-label col-form-label-sm"></label>
+                            <input type="file" name="file" class="form-control form-control-sm" />
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                <button type="submit" class="btn btn-sm btn-primary form-control">@(Model.Product.Id != 0 ? "Update" : "Create")</button>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Product" asp-action="Index" class="btn btn-sm btn-secondary border  form-control">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+                        <img src="@Model.Product.imgURL" with="100%" class="img-thumbnail" />
+
+                    </div>
+
+                </div>
+
+     
+        </form>
+    </div>
+</div>
+</div>
+
+@* using client side validation //// you can add _layout  *@
+    @section Scripts{
+        @{
+            <partial name="_validationscriptspartial" />
+        }
+    }
