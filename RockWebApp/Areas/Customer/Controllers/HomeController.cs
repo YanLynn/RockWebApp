@@ -23,6 +23,12 @@ namespace RockWebApp.Areas.Customer.Controllers
             IEnumerable<Product> productList = _unitOfwork.Product.GetAll(includeProperties:"Category");
             return View(productList);
         }
+        public IActionResult Details(int? productId)
+        {
+            Product product = _unitOfwork.Product.Get(u => u.Id == productId, includeProperties: "Category");
+            return View(product);
+        }
+
 
         public IActionResult Privacy()
         {
