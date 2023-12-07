@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Rock.DataAccess.Data;
 using Rock.DataAccess.Repository.IRepository;
 using Rock.Models;
+using Rock.Utility;
 
 namespace RockWebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Amin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

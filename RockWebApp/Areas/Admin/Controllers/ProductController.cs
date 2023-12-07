@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rock.DataAccess.Data;
 using Rock.DataAccess.Repository.IRepository;
 using Rock.Models;
 using Rock.Models.ViewModels;
+using Rock.Utility;
 using System.Collections.Generic;
 
 namespace RockWebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Amin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
