@@ -68,6 +68,18 @@
                             </ul>
                             
                         </li>
+                            <span class="position-relative">
+                                <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    <i class="bi bi-cart">
+                                        <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger">
+                                            0
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    </i>
+                                </a>
+                                
+                            </span>
+                            
                         }
                     </ul>
                     <partial name="_LoginPartial" />
@@ -84,7 +96,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="position:relative !important">
         <div class="container">
             &copy; 2023 - RockWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
